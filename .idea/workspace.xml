@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e3f2136d-0f88-42b7-827e-790a485a799f" name="Changes" comment="project start">
+      <change afterPath="$PROJECT_DIR$/test_files/exported/test3.rar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_files/imported/test3.rar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -78,7 +81,7 @@
       <workItem from="1706010245273" duration="11032000" />
       <workItem from="1706033905761" duration="1256000" />
       <workItem from="1706036906981" duration="1733000" />
-      <workItem from="1706040392128" duration="6729000" />
+      <workItem from="1706040392128" duration="11111000" />
     </task>
     <task id="LOCAL-00001" summary="project start">
       <option name="closed" value="true" />
@@ -133,7 +136,7 @@
     <option name="LAST_COMMIT_MESSAGE" value="project start" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/compare_files$main.coverage" NAME="main Coverage Results" MODIFIED="1706113426594" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/compare_files$main.coverage" NAME="main Coverage Results" MODIFIED="1706116505699" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/file_compare_home_task$main.coverage" NAME="main Coverage Results" MODIFIED="1706037447238" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

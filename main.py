@@ -39,11 +39,10 @@ exported_compressed_dict = {file.name: file.stat().st_size for file in exportedC
 for file_name, imported_size in imported_compressed_dict.items():
     exported_size = exported_compressed_dict.get(file_name)
     if exported_size is not None:
-        if imported_size == exported_size:
-            print(f'{file_name}: Good')
-        else:
+        if imported_size != exported_size:
             difference = abs(imported_size - exported_size)
             print(f'{file_name}: Error, size difference is {difference} bytes')
+
 # end of checking compressed files
 
 
@@ -52,13 +51,22 @@ def compare_images(img1_path, img2_path):
     img1 = cv2.imread(str(img1_path))
     img2 = cv2.imread(str(img2_path))
 
+    # Check if the dimensions match
     if img1.shape != img2.shape:
         print(f'Images {img1_path.name} and {img2_path.name} have different dimensions.')
         return
 
-    differ = cv2.absdiff(img1, img2)
-    total_difference = np.sum(differ)
-    print(f'Total differ for {img1_path.name}: {total_difference}')
+    # Compute the absolute difference
+    difference = cv2.absdiff(img1, img2)
+
+    # Sum the differences
+    total_difference = np.sum(difference)
+
+    # Define a threshold for the total difference
+    threshold = 10
+
+    if total_difference > threshold:
+        print(f'Images {img1_path.name} and {img2_path.name} are not similar. Total difference: {total_difference}')
 
 
 for importedImage in importedImageFiles:
