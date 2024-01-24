@@ -1,3 +1,5 @@
+import cv2
+import numpy as np
 from pathlib import Path
 
 # end of imports
@@ -14,7 +16,6 @@ for f in importedFilePaths:
     file_names = f.name
     print(file_names)
 
-
 def sort_files(input_files, img_types, compressed_types):
     image_files = []
     compressed_files = []
@@ -25,8 +26,6 @@ def sort_files(input_files, img_types, compressed_types):
         elif filePath.suffix in compressed_types:
             compressed_files.append(filePath)
     return image_files, compressed_files
-
-
 # end of sort_files function
 
 importedImageFiles, importedCompressedFiles = sort_files(importedFilePaths, imgTypes, compressedTypes)
@@ -44,3 +43,28 @@ for file_name, imported_size in imported_compressed_dict.items():
             difference = abs(imported_size - exported_size)
             print(f'{file_name}: Error, size difference is {difference} bytes')
 # end of checking compressed files
+
+def compare_images(img1_path, img2_path):
+    # Load the images
+    img1 = cv2.imread(str(img1_path))
+    img2 = cv2.imread(str(img2_path))
+
+    # Check if the dimensions match
+    if img1.shape != img2.shape:
+        print(f'Images {img1_path.name} and {img2_path.name} have different dimensions.')
+        return
+
+    # Compute the absolute difference
+    difference = cv2.absdiff(img1, img2)
+
+    # Sum the differences
+    total_difference = np.sum(difference)
+
+    print(f'Total difference for {img1_path.name}: {total_difference}')
+
+# start of image comparison
+for importedImage in importedImageFiles:
+    for exportedImage in exportedImageFiles:
+        if importedImage.name == exportedImage.name:
+            compare_images(importedImage, exportedImage)
+# end of image comparison
