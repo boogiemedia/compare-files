@@ -7,7 +7,6 @@
     <list default="true" id="e3f2136d-0f88-42b7-827e-790a485a799f" name="Changes" comment="project start">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +49,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "advanced.settings",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -83,7 +82,7 @@
       <workItem from="1706033905761" duration="1256000" />
       <workItem from="1706036906981" duration="1733000" />
       <workItem from="1706040392128" duration="12153000" />
-      <workItem from="1706379472752" duration="7361000" />
+      <workItem from="1706379472752" duration="8688000" />
     </task>
     <task id="LOCAL-00001" summary="project start">
       <option name="closed" value="true" />
