@@ -11,7 +11,31 @@ importedPath = Path('test_files/imported')
 importedFilePaths = [file for file in importedPath.iterdir() if file.is_file()]
 exportedPath = Path('test_files/exported')
 exportedFilePaths = [file for file in exportedPath.iterdir() if file.is_file()]
-# end of file directories
+# end of file
+
+
+def compare_images(img1_path, img2_path):
+    # Load the images
+    img1 = cv2.imread(str(img1_path))
+    img2 = cv2.imread(str(img2_path))
+
+    # Check if the dimensions match
+    if img1.shape != img2.shape:
+        print(f'Images {img1_path.name} and {img2_path.name} have different dimensions.')
+        return
+
+    # Sum the differences
+    diff = cv2.absdiff(img1, img2)
+    total_difference = np.sum(diff)
+
+    # Define a threshold for the total difference
+    threshold = 10
+
+    if total_difference > threshold:
+        print(f'Images {img1_path.name} and {img2_path.name} are not similar. Total difference: {total_difference}')
+# end of compare_images
+
+
 for f in importedFilePaths:
     file_names = f.name
     print(file_names)
@@ -29,6 +53,8 @@ def sort_files(input_files, img_types, compressed_types):
     return image_files, compressed_files
 # end of sort_files function
 
+# ______________end of defining functions_____________
+
 
 importedImageFiles, importedCompressedFiles = sort_files(importedFilePaths, imgTypes, compressedTypes)
 exportedImageFiles, exportedCompressedFiles = sort_files(exportedFilePaths, imgTypes, compressedTypes)
@@ -42,32 +68,7 @@ for file_name, imported_size in imported_compressed_dict.items():
         if imported_size != exported_size:
             difference = abs(imported_size - exported_size)
             print(f'{file_name}: Error, size difference is {difference} bytes')
-
 # end of checking compressed files
-
-
-def compare_images(img1_path, img2_path):
-    # Load the images
-    img1 = cv2.imread(str(img1_path))
-    img2 = cv2.imread(str(img2_path))
-
-    # Check if the dimensions match
-    if img1.shape != img2.shape:
-        print(f'Images {img1_path.name} and {img2_path.name} have different dimensions.')
-        return
-
-    # Compute the absolute difference
-    difference = cv2.absdiff(img1, img2)
-
-    # Sum the differences
-    total_difference = np.sum(difference)
-
-    # Define a threshold for the total difference
-    threshold = 10
-
-    if total_difference > threshold:
-        print(f'Images {img1_path.name} and {img2_path.name} are not similar. Total difference: {total_difference}')
-
 
 for importedImage in importedImageFiles:
     for exportedImage in exportedImageFiles:

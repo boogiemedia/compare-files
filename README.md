@@ -4,7 +4,6 @@
 This Python script compares images in two directories and prints the names of images that are not similar.
 
 
-
 ## Requirements and usage
 
 - Python 3.6 or higher
@@ -25,7 +24,7 @@ __Run the Script:__ Run the script in your Python environment. The script will a
 2. __Checking Compressed Files by Size:__ The script will check the sizes of the compressed files in both directories. If there’s a size difference, it will print an error message with the file name and the size difference in bytes.
 
 3. __Image Comparison Using OpenCV:__ Images can be compared visually, but this process can be subjective and inconsistent. Using OpenCV, the script can compare images objectively based on their pixel values.
-OpenCV’s robust functionality, efficiency, and strong community support make it an ideal choice for this image and file comparison script. 😊
+OpenCV’s robust functionality, efficiency, and strong community support make it an ideal choice for this image and file comparison script.
 https://opencv.org/
 
 
