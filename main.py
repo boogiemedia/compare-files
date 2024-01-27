@@ -7,11 +7,35 @@ imgTypes = ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.tiff']
 compressedTypes = ['.zip', '.tar', '.gz', '.rar']
 # end of file types
 
+
 importedPath = Path('test_files/imported')
 importedFilePaths = [file for file in importedPath.iterdir() if file.is_file()]
 exportedPath = Path('test_files/exported')
 exportedFilePaths = [file for file in exportedPath.iterdir() if file.is_file()]
-# end of file
+# end of file directories
+
+# create set of files
+imported_file_names = {file.name for file in importedFilePaths}
+exported_file_names = {file.name for file in exportedFilePaths}
+
+
+def print_unique_files(dir1, dir2):
+    dir1_file_names = {file.name for file in dir1}
+    dir2_file_names = {file.name for file in dir2}
+
+    unique_in_dir1 = dir1_file_names - dir2_file_names
+    unique_in_dir2 = dir2_file_names - dir1_file_names
+
+    if unique_in_dir1:
+        print("Files present in the import directory but not in the export:")
+        for fileName in unique_in_dir1:
+            print(fileName)
+
+    if unique_in_dir2:
+        print("Files present in the export directory but not in the import:")
+        for fileName in unique_in_dir2:
+            print(fileName)
+# End of print_unique_files function
 
 
 def compare_images(img1_path, img2_path):
@@ -33,12 +57,7 @@ def compare_images(img1_path, img2_path):
 
     if total_difference > threshold:
         print(f'Images {img1_path.name} and {img2_path.name} are not similar. Total difference: {total_difference}')
-# end of compare_images
-
-
-for f in importedFilePaths:
-    file_names = f.name
-    print(file_names)
+# end of compare_images function
 
 
 def sort_files(input_files, img_types, compressed_types):
@@ -53,7 +72,16 @@ def sort_files(input_files, img_types, compressed_types):
     return image_files, compressed_files
 # end of sort_files function
 
-# ______________end of defining functions_____________
+# ------------------------------------ End of function defining --------------------------------------------------------
+
+
+# print files that have nomatch
+print_unique_files(importedFilePaths, exportedFilePaths)
+
+# Filter the file lists to only include files with names in the intersection
+common_file_names = imported_file_names & exported_file_names
+importedFilePaths = [file for file in importedFilePaths if file.name in common_file_names]
+exportedFilePaths = [file for file in exportedFilePaths if file.name in common_file_names]
 
 
 importedImageFiles, importedCompressedFiles = sort_files(importedFilePaths, imgTypes, compressedTypes)
@@ -69,6 +97,7 @@ for file_name, imported_size in imported_compressed_dict.items():
             difference = abs(imported_size - exported_size)
             print(f'{file_name}: Error, size difference is {difference} bytes')
 # end of checking compressed files
+
 
 for importedImage in importedImageFiles:
     for exportedImage in exportedImageFiles:
